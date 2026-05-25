@@ -1,0 +1,274 @@
+/* ==========================================================================
+   CONTENEDOR Y ANIMACIÓN DE ENTRADA
+   ========================================================================== */
+.search-view-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.animate-fade-in {
+  animation: smoothSetup 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes smoothSetup {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   BARRA DE BÚSQUEDA PREMIUM (UX INTEGRADA)
+   ========================================================================== */
+.search-hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.search-box-wrapper {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+.search-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.premium-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #242424;
+  border-radius: 500px;
+  padding: 6px 6px 6px 20px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.premium-search-bar:focus-within {
+  background-color: #2a2a2a;
+  border-color: #535353;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.search-inside-icon {
+  color: #b3b3b3;
+  font-size: 24px;
+  margin-right: 14px;
+  pointer-events: none;
+}
+
+.custom-search-input {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 0;
+}
+
+.custom-search-input::placeholder {
+  color: #727272;
+}
+
+/* Botón de flecha minimalista dentro del input */
+.btn-search-trigger {
+  background-color: #ffffff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.btn-search-trigger span {
+  color: #000000;
+  font-size: 20px;
+}
+
+.btn-search-trigger:hover {
+  transform: scale(1.05);
+  background-color: #1db954; /* Cambia a verde Spotify en el hover del botón */
+}
+
+/* ==========================================================================
+   REJILLA DE ARTISTAS (GRID DE REJILLA FLUIDA)
+   ========================================================================== */
+.results-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.results-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.artists-premium-grid {
+  display: grid;
+  /* Rejilla inteligente auto-adaptable sin usar Media Queries pesadas */
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 24px;
+}
+
+/* COMPONENTE: TARJETA DE ARTISTA INDIVIDUAL */
+.artist-premium-card {
+  background-color: #181818;
+  padding: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artist-premium-card:hover {
+  background-color: #282828;
+}
+
+/* Renderizado circular perfecto de Avatar */
+.artist-avatar-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1; /* Garantiza proporciones 1:1 exactas */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.artist-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.artist-premium-card:hover .artist-avatar-img {
+  transform: scale(1.04);
+}
+
+/* Fallback gradiente elegante */
+.artist-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #202020 0%, #090909 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-avatar-fallback span {
+  font-size: 64px;
+  color: #535353;
+}
+
+/* Mini Badge Flotante para Popularidad */
+.card-floating-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-floating-badge span {
+  font-size: 14px;
+}
+
+.card-floating-badge span.material-symbols-rounded {
+  color: #1db954; /* Estrella verde para dar look de marca */
+}
+
+.badge-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* BLOQUE DE TEXTOS */
+.artist-card-details {
+  width: 100%;
+  text-align: left;
+  padding-left: 4px;
+}
+
+.artist-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+}
+
+.artist-card-type {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  font-weight: 500;
+}
+
+/* Indicador de acción en Hover */
+.artist-hover-action {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  background-color: #1db954;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.artist-hover-action span {
+  font-size: 12px;
+  color: #000000;
+  font-weight: 800;
+  margin-left: 2px; /* Centrado visual fino para la flecha */
+}
+
+.artist-premium-card:hover .artist-hover-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.artist-hover-action:hover {
+  background-color: #1ed760;
+  transform: scale(1.06);
+}

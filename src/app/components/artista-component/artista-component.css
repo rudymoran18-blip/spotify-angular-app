@@ -1,0 +1,319 @@
+/* ==========================================================================
+   CONTENEDOR GENERAL Y ANIMACIÓN
+   ========================================================================== */
+.view-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   PERFIL DEL ARTISTA (UX SPLIT)
+   ========================================================================== */
+.artist-profile-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-end;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(18,18,18,0) 100%);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.artist-cover-card {
+  width: 230px;
+  height: 230px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.artist-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.artist-profile-wrapper:hover .artist-image {
+  transform: scale(1.03);
+}
+
+.artist-meta-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.category-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #1db954;
+  margin-bottom: 8px;
+}
+
+.artist-title-name {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.stats-row-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat-badge-premium {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 500px;
+  background-color: #282828;
+}
+
+.stat-badge-premium.highlight {
+  background-color: rgba(29, 185, 84, 0.15);
+  color: #1db954;
+}
+
+.stat-badge-premium span {
+  font-size: 16px;
+}
+
+/* Componente de Etiquetas de Género */
+.genres-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.genre-chip {
+  background-color: #181818;
+  border: 1px solid #333333;
+  color: #b3b3b3;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Botón Premium */
+.btn-spotify-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1db954;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 28px;
+  border-radius: 500px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.btn-spotify-primary:hover {
+  background-color: #1ed760;
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   TOP TRACKS (LISTA FLEXBOX ELÁSTICA)
+   ========================================================================== */
+.tracks-section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.tracks-list-container {
+  background-color: #121212;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Estructura de fila común para alineación perfecta */
+.track-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+  border-radius: 4px;
+}
+
+.table-header-row {
+  border-bottom: 1px solid #282828;
+  color: #b3b3b3;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.table-header-row span {
+  font-size: 18px;
+}
+
+.track-item-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.track-item-row:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Ancho y alineación de columnas (Layout Responsivo Interno) */
+.col-index { width: 30px; text-align: center; color: #b3b3b3; }
+.col-track-info { flex: 2; display: flex; align-items: center; gap: 14px; min-width: 200px; }
+.col-album { flex: 1.5; color: #b3b3b3; min-width: 150px; }
+.col-duration { width: 70px; color: #b3b3b3; text-align: right; }
+.col-pop { width: 60px; text-align: center; }
+.col-audio { width: 280px; display: flex; justify-content: flex-end; }
+
+/* Tipografía de datos tabulares */
+.font-digits {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+/* Detalles internos de la canción */
+.track-album-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.track-main-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  display: block;
+}
+
+.text-truncate-custom {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
+
+.pop-indicator-number {
+  background-color: #282828;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #e5e5e5;
+}
+
+/* Reproductor de Audio nativo re-estilizado */
+.premium-audio-player {
+  height: 28px;
+  width: 260px;
+  filter: invert(90%) hue-rotate(180deg); /* Truco Senior para adaptar el player nativo a Dark Mode */
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.premium-audio-player:hover {
+  opacity: 1;
+}
+
+/* Elementos alternativos sin Preview */
+.no-preview-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lbl-no-preview {
+  font-size: 0.75rem;
+  color: #535353;
+  font-style: italic;
+}
+
+.btn-link-spotify {
+  color: #b3b3b3;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.btn-link-spotify span {
+  font-size: 24px;
+  transition: color 0.2s;
+}
+
+.btn-link-spotify:hover span {
+  color: #1db954;
+}
+
+/* Empty State */
+.empty-state-tracks {
+  padding: 48px;
+  text-align: center;
+  color: #b3b3b3;
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+/* Soporte de Responsividad para pantallas muy chicas */
+@media (max-width: 868px) {
+  .col-album, .col-pop, .table-header-row .col-duration {
+    display: none;
+  }
+  .col-duration {
+    display: none;
+  }
+  .artist-profile-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .artist-meta-details {
+    align-items: center;
+  }
+  .stats-row-badges, .genres-container {
+    justify-content: center;
+  }
+  .artist-title-name {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,71 @@
+<div class="search-view-container animate-fade-in">
+
+  <!-- BLOQUE DE BÚSQUEDA CENTRALIZADO -->
+  <header class="search-hero-section">
+    <div class="search-box-wrapper">
+      <h2 class="search-title">¿Qué te apetece escuchar hoy?</h2>
+
+      <div class="premium-search-bar">
+        <span class="material-symbols-rounded search-inside-icon">Buscar</span>
+        <input
+          type="text"
+          class="custom-search-input"
+          [(ngModel)]="termino"
+          (keyup.enter)="buscar()"
+          placeholder="Artistas, bandas o grupos..."
+        />
+        <!-- El botón ahora es un detalle elegante dentro de la barra, no un bloque separado -->
+        <button (click)="buscar()" class="btn-search-trigger" aria-label="Ejecutar búsqueda">
+          <span class="material-symbols-rounded">B</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- REJILLA DE RESULTADOS (ARTISTAS) -->
+  <main class="results-section-wrapper">
+    <h3 class="results-heading" *ngIf="spotifyService.artistas.length > 0">Artistas encontrados</h3>
+
+    <div class="artists-premium-grid">
+      <div
+        class="artist-premium-card"
+        *ngFor="let artista of spotifyService.artistas"
+        [routerLink]="['/artista', artista.id]"
+      >
+        <!-- Contenedor de Imagen Circular (Estilo Spotify Orgánico) -->
+        <div class="artist-avatar-wrapper">
+          <img
+            *ngIf="artista.images.length > 0"
+            [src]="artista.images[0].url"
+            class="artist-avatar-img"
+            loading="lazy"
+            alt="Fotografía de {{ artista.name }}"
+          />
+
+          <!-- Imagen de respaldo (Fallback UX) si el artista no tiene foto -->
+          <div *ngIf="artista.images.length === 0" class="artist-avatar-fallback">
+            <span class="material-symbols-rounded">person_melancholy</span>
+          </div>
+
+          <!-- Badge de Popularidad Flotante Micro-estilizado -->
+          <div class="card-floating-badge" title="Popularidad: {{ artista.popularity }}%">
+            <span class="material-symbols-rounded">star</span>
+            <span class="badge-value">{{ artista.popularity }}</span>
+          </div>
+        </div>
+
+        <!-- Información Corta del Artista -->
+        <div class="artist-card-details">
+          <h4 class="artist-card-name">{{ artista.name }}</h4>
+          <span class="artist-card-type">Artista</span>
+        </div>
+
+        <!-- Botón de acción rápido (Flota sutilmente en el Hover de la tarjeta) -->
+        <div class="artist-hover-action">
+          <span class="material-symbols-rounded">Buscar</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>

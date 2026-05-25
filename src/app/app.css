@@ -1,0 +1,47 @@
+/* ==========================================================================
+   RAÍZ DEL COMPONENTE (Contenedor invisible <app-root>)
+   ========================================================================== */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que la app ocupe el 100% de la ventana de forma elástica */
+  background-color: #121212;
+  overflow-x: hidden; /* Previene scrollbars horizontales accidentales globales */
+}
+
+/* ==========================================================================
+   ESTRUCTURA DEL VIEWPORT (Área debajo de la Navbar)
+   ========================================================================== */
+.app-main-viewport {
+  /* Resta la altura exacta de tu Navbar para un cálculo perfecto */
+  min-height: calc(100vh - 68px);
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+  flex: 1 0 auto; /* Permite estirarse si hay poco contenido, empujando el footer */
+}
+
+.app-content-wrapper {
+  width: 100%;
+  flex: 1 1 auto;
+  margin: 0 auto;
+  padding-bottom: 40px; /* Margen de seguridad base para que el contenido no choque */
+}
+
+/* ==========================================================================
+   ANIMACIÓN DE TRANSICIÓN SUAVE ENTRE VISTAS
+   ========================================================================== */
+.animate-page-fade {
+  animation: pageViewEntrance 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes pageViewEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.995) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

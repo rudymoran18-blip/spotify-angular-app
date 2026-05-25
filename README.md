@@ -1,59 +1,53 @@
-# SpotiApp
+# Spotify Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+Aplicación desarrollada con Angular para búsqueda de artistas utilizando Spotify Web API.
 
-## Development server
+## Tecnologías utilizadas
 
-To start a local development server, run:
+- Angular
+- TypeScript
+- RxJS
+- HttpClient
+- Bootstrap
 
-```bash
-ng serve
-```
+## Características
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Búsqueda de artistas
+- Visualización de información del artista
+- Consumo de APIs REST
+- Manejo de observables con RxJS
 
-## Code scaffolding
+## Importante
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Spotify actualmente requiere:
 
-```bash
-ng generate component component-name
-```
+- Cuenta Spotify Premium
+- Token válido de acceso
+- Renovación manual del token aproximadamente cada 1 hora
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Por motivos de seguridad el token no se incluye en el repositorio.
 
-```bash
-ng generate --help
-```
+Debe agregarse manualmente en:
 
-## Building
+src/app/services/spotify.service.ts
 
-To build the project run:
+## Generar token Spotify
 
-```bash
-ng build
-```
+1. Crear aplicación en Spotify Developer Dashboard
+2. Obtener Client ID y Client Secret
+3. Generar access token usando OAuth Client Credentials Flow
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Configuración
 
-## Running unit tests
+Este proyecto utiliza Spotify Web API.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Debido a restricciones actuales de Spotify:
 
-```bash
-ng test
-```
+- Se requiere una cuenta Spotify Premium
+- El token expira aproximadamente cada 1 hora
+- Debe reemplazarse manualmente en el servicio SpotifyService
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para generar un token:
+1. Crear app en Spotify Developer Dashboard
+2. Obtener Client ID y Client Secret
+3. Generar access token usando OAuth Client Credentials Flow

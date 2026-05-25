@@ -1,0 +1,38 @@
+<header class="premium-navbar animate-fade-down">
+  <div class="navbar-fluid-container">
+
+    <!-- LADO IZQUIERDO: Branding o Controles de Navegación Histórica -->
+    <div class="nav-left-block">
+      <div class="brand-minimal">
+        <span class="material-symbols-rounded brand-logo-icon">SpotiApp</span>
+      </div>
+    </div>
+
+    <!-- CENTRO: Enlaces de Navegación Tipo Tabs Premium -->
+    <nav class="nav-center-block">
+      <ul class="nav-links-list">
+        <li class="nav-link-item">
+          <a
+            [routerLink]="['/home']"
+            routerLinkActive="active-tab"
+            class="nav-tab-link"
+          >
+            <span class="material-symbols-rounded nav-tab-icon">Inicio</span>
+
+          </a>
+        </li>
+        <li class="nav-link-item">
+          <a
+            [routerLink]="['/buscar']"
+            routerLinkActive="active-tab"
+            class="nav-tab-link"
+          >
+            <span class="material-symbols-rounded nav-tab-icon">Buscar</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+  </div>
+</header>

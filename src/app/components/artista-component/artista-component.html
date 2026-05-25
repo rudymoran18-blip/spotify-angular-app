@@ -1,0 +1,123 @@
+<div class="view-container animate-fade-in">
+
+  <header class="artist-profile-wrapper" *ngIf="artista">
+    <div class="artist-cover-card">
+      <img
+        [src]="artista?.images?.[0]?.url || 'assets/no-image.png'"
+        alt="Foto de {{ artista?.name }}"
+        class="artist-image"
+      />
+    </div>
+
+    <div class="artist-meta-details">
+      <span class="category-tag">Artista verificado</span>
+      <h1 class="artist-title-name">{{ artista?.name }}</h1>
+
+      <div class="stats-row-badges">
+        <div class="stat-badge-premium highlight">
+          <span class="material-symbols-rounded">local_fire_department</span>
+          Popularidad: <strong>{{ artista?.popularity ?? 'N/A' }}%</strong>
+        </div>
+
+        <div class="stat-badge-premium text-secondary">
+          <span class="material-symbols-rounded">group</span>
+          <strong>{{ artista?.followers?.total | number }}</strong> seguidores
+        </div>
+      </div>
+
+      <div class="genres-container" *ngIf="artista?.genres?.length">
+        <span class="genre-chip" *ngFor="let g of artista.genres">
+          {{ g }}
+        </span>
+      </div>
+
+      <div class="action-buttons-group">
+        <a
+          class="btn-spotify-primary"
+          [href]="artista?.external_urls?.spotify"
+          target="_blank"
+          *ngIf="artista?.external_urls?.spotify"
+        >
+          <span class="material-symbols-rounded">open_in_new</span>
+          Abrir en Spotify
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="tracks-section-container">
+    <div class="section-header">
+      <h2 class="section-heading-title">Canciones populares</h2>
+    </div>
+
+    <div class="tracks-list-container">
+
+      <div class="track-row table-header-row">
+        <div class="col-index">#</div>
+        <div class="col-track-info">Título</div>
+        <div class="col-album">Álbum</div>
+        <div class="col-duration"><span class="material-symbols-rounded">schedule</span></div>
+        <div class="col-pop"><span class="material-symbols-rounded">trending_up</span></div>
+        <div class="col-audio">Reproductor</div>
+      </div>
+
+      <div
+        class="track-row track-item-row"
+        *ngFor="let pista of topTracks; let i = index"
+      >
+        <div class="col-index font-digits">{{ i + 1 }}</div>
+
+        <div class="col-track-info">
+          <img
+            [src]="pista?.album?.images?.[2]?.url || pista?.album?.images?.[1]?.url || pista?.album?.images?.[0]?.url || 'assets/no-image.png'"
+            class="track-album-thumb"
+            alt="Portada de {{ pista?.album?.name }}"
+          />
+          <div class="track-text-group">
+            <span class="track-main-name">{{ pista?.name }}</span>
+          </div>
+        </div>
+
+        <div class="col-album text-truncate-custom">{{ pista?.album?.name }}</div>
+
+        <div class="col-duration font-digits">
+          {{ pista?.duration_ms | date:'m:ss' }}
+        </div>
+
+        <div class="col-pop">
+          <span class="pop-indicator-number">{{ pista?.popularity ?? 0 }}</span>
+        </div>
+
+        <div class="col-audio">
+          <audio
+            *ngIf="pista?.preview_url; else sinPreview"
+            [src]="pista.preview_url"
+            controls
+            preload="none"
+            class="premium-audio-player"
+          ></audio>
+
+          <ng-template #sinPreview>
+            <div class="no-preview-badge">
+              <span class="lbl-no-preview">Sin preview</span>
+              <a
+                class="btn-link-spotify"
+                [href]="pista?.external_urls?.spotify"
+                target="_blank"
+                title="Escuchar canción completa"
+              >
+                <span class="material-symbols-rounded">play_circle</span>
+              </a>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="empty-state-tracks" *ngIf="!topTracks || topTracks.length === 0">
+        <span class="material-symbols-rounded empty-icon">library_music</span>
+        <p>No se encontraron canciones disponibles para este artista.</p>
+      </div>
+
+    </div>
+  </section>
+</div>

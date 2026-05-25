@@ -1,0 +1,171 @@
+/* ==========================================================================
+   ESTILOS DE LA NAVBAR PREMIUM
+   ========================================================================== */
+.premium-navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 68px;
+  background-color: rgba(18, 18, 18, 0.75);
+  /* Efecto Glassmorphism: desenfoca lo que pasa por detrás de la barra */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 100;
+}
+
+.navbar-fluid-container {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Animación sutil de entrada desde arriba */
+.animate-fade-down {
+  animation: navEntrance 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes navEntrance {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   BLOQUE IZQUIERDO: BRANDING
+   ========================================================================== */
+.nav-left-block {
+  display: flex;
+  align-items: center;
+}
+
+.brand-minimal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo-icon {
+  color: #1db954; /* Verde Spotify corporativo */
+  font-size: 26px;
+}
+
+.brand-text-name {
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   BLOQUE CENTRAL: TABS DE NAVEGACIÓN (UX OPTIMIZADA)
+   ========================================================================== */
+.nav-center-block {
+  height: 100%;
+}
+
+.nav-links-list {
+  display: flex;
+  list-style: none;
+  height: 100%;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-tab-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b3b3b3;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 500px; /* Bordes completamente ovalados */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-tab-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tab-icon {
+  font-size: 20px;
+}
+
+/* Estado Activo inyectado automáticamente por routerLinkActive de Angular */
+.nav-tab-link.active-tab {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   BLOQUE DERECHO: PERFIL DE USUARIO
+   ========================================================================== */
+.nav-right-block {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px 14px 4px 4px;
+  border-radius: 500px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background-color 0.2s;
+}
+
+.user-profile-trigger:hover {
+  background-color: #282828;
+}
+
+.user-avatar-badge {
+  width: 28px;
+  height: 28px;
+  background-color: #535353;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.user-profile-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   RESPONSIVIDAD MÓVIL
+   ========================================================================== */
+@media (max-width: 640px) {
+  .brand-text-name, .user-profile-name {
+    display: none; /* Esconde textos secundarios en pantallas chicas para priorizar los tabs */
+  }
+
+  .navbar-fluid-container {
+    padding: 0 12px;
+  }
+
+  .nav-tab-text {
+    display: none; /* En mobile se transforma en barra de iconos únicamente */
+  }
+
+  .nav-tab-link {
+    padding: 10px;
+  }
+}
