@@ -37,7 +37,7 @@ Aplicación desarrollada con Angular para búsqueda de artistas utilizando Spoti
 ### Vista responsive
 
 <p align="center">
-  <img src="./src/assets/screenshot/home-iPhone-14-PRO-MAX.png" width="300">
+  <img src="./src/assets/screenshot/mobile-view.png" width="300">
 </p>
 
 ---
