@@ -2,6 +2,8 @@
 
 Aplicación desarrollada con Angular para búsqueda de artistas utilizando Spotify Web API.
 
+---
+
 ## Tecnologías utilizadas
 
 - Angular
@@ -10,12 +12,43 @@ Aplicación desarrollada con Angular para búsqueda de artistas utilizando Spoti
 - HttpClient
 - Bootstrap
 
+---
+
 ## Características
 
 - Búsqueda de artistas
 - Visualización de información del artista
 - Consumo de APIs REST
 - Manejo de observables con RxJS
+- Integración con Spotify Web API
+
+---
+
+## Capturas
+
+### Vista principal
+
+<p align="center">
+  <img src="./src/assets/screenshot/home.png" width="900">
+</p>
+
+---
+
+### Vista responsive
+
+<p align="center">
+  <img src="./src/assets/screenshot/home-iPhone-14-PRO-MAX.png" width="300">
+</p>
+
+---
+
+### Resultado de búsqueda
+
+<p align="center">
+  <img src="./src/assets/screenshot/search.png" width="900">
+</p>
+
+---
 
 ## Importante
 
@@ -29,25 +62,47 @@ Por motivos de seguridad el token no se incluye en el repositorio.
 
 Debe agregarse manualmente en:
 
+```bash
 src/app/services/spotify.service.ts
+```
+
+---
 
 ## Generar token Spotify
 
 1. Crear aplicación en Spotify Developer Dashboard
 2. Obtener Client ID y Client Secret
-3. Generar access token usando OAuth Client Credentials Flow
+3. Generar access token utilizando OAuth Client Credentials Flow
 
-## Configuración
+---
 
-Este proyecto utiliza Spotify Web API.
+## Instalación
 
-Debido a restricciones actuales de Spotify:
+Clonar repositorio:
 
-- Se requiere una cuenta Spotify Premium
-- El token expira aproximadamente cada 1 hora
-- Debe reemplazarse manualmente en el servicio SpotifyService
+```bash
+git clone https://github.com/TU_USUARIO/spotify-angular-app.git
+```
 
-Para generar un token:
-1. Crear app en Spotify Developer Dashboard
-2. Obtener Client ID y Client Secret
-3. Generar access token usando OAuth Client Credentials Flow
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Ejecutar proyecto:
+
+```bash
+ng serve -o
+```
+
+---
+
+## Estado del proyecto
+
+Proyecto educativo enfocado en:
+
+- Consumo de APIs REST
+- Manejo de autenticación Bearer Token
+- Integración Angular + RxJS
+- Manejo de observables y peticiones HTTP
